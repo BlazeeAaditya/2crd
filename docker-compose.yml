@@ -13,7 +13,7 @@ services:
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      UPLOAD_LIMIT: 500M
+      UPLOAD_LIMIT: 3G
     ports:
       - "8083:80"             # Access phpMyAdmin at http://localhost:8083
     depends_on:
