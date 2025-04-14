@@ -15,7 +15,9 @@ services:
       PMA_PORT: 3306
       UPLOAD_LIMIT: 3G
     ports:
-      - "8083:80"             # Access phpMyAdmin at http://localhost:8083
+      - "8083:80"  # Access phpMyAdmin at http://localhost:8083
+    volumes:
+      - ./phpmyadmin-custom.conf:/etc/apache2/conf-enabled/phpmyadmin-custom.conf
     depends_on:
       - db
     networks:
