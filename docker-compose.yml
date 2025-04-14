@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: php56-web
+    networks:
+      - appnet
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 500M
+    ports:
+      - "8083:80"             # Access phpMyAdmin at http://localhost:8083
+    depends_on:
+      - db
+    networks:
+      - appnet
+
+  db:
+    image: mysql:5.7
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Ma66217829
+      MYSQL_DATABASE: forum
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Ma66217829
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - appnet
+
+volumes:
+  db_data:
+
+networks:
+  appnet:

@@ -1,0 +1,546 @@
+/**
+* vBulletin 3.8.7 CSS
+* Style: 'C2C'; Style ID: 5
+*/
+body
+{
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+	background-image: url(images/BluEVO/bg.png);
+	background-repeat:repeat;
+	background-attachment:fixed;
+	background-position:center top;
+}
+a:link, body_alink
+{
+	color: #FFFFFF;
+}
+a:visited, body_avisited
+{
+	color: #CCCCCC;
+}
+a:hover, a:active, body_ahover
+{
+	color: #00CCFF;
+}
+.page
+{
+	color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	background-image: url(images/BluEVO/bg.png);
+	background-repeat:repeat;
+	background-attachment:fixed;
+	background-position:center top;
+}
+.page a:link, .page_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.page a:visited, .page_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.page a:hover, .page a:active, .page_ahover
+{
+	color: #00CCFF;
+}
+td, th, p, li
+{
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border:none;
+	
+}
+.tborder
+{
+	background: #1F1F1F;
+	color: #999999;
+	border: 1px solid #000000;
+}
+.tcat
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #FFFFFF;
+	font: 14px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	height:22px;
+	text-shadow: #00CCFF 0px 0px 5px;
+	text-align:center;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #00CCFF;
+}
+.thead
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	text-shadow: rgba(0,0,0,.9) 1px 1px 1px;
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #00CCFF;
+}
+.tfoot
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #FFFFFF;
+}
+.tfoot a:link, .tfoot_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.tfoot a:visited, .tfoot_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.tfoot a:hover, .tfoot a:active, .tfoot_ahover
+{
+	color: #00CCFF;
+}
+.alt1, .alt1Active
+{
+	background: #181818;
+	color: #999999;
+	font-size: 14px;
+	text-shadow: rgba(0,0,0,.9) 1px 1px 1px;
+}
+.alt1 a:link, .alt1_alink, .alt1Active a:link, .alt1Active_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.alt1 a:visited, .alt1_avisited, .alt1Active a:visited, .alt1Active_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.alt1 a:hover, .alt1 a:active, .alt1_ahover, .alt1Active a:hover, .alt1Active a:active, .alt1Active_ahover
+{
+	color: #00CCFF;
+}
+.alt2, .alt2Active
+{
+	background: #181818;
+	color: #c0c0c0;
+	font-size: 14px;
+	text-shadow: rgba(0,0,0,.9) 1px 1px 1px;
+}
+.alt2 a:link, .alt2_alink, .alt2Active a:link, .alt2Active_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.alt2 a:visited, .alt2_avisited, .alt2Active a:visited, .alt2Active_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.alt2 a:hover, .alt2 a:active, .alt2_ahover, .alt2Active a:hover, .alt2Active a:active, .alt2Active_ahover
+{
+	color: #00CCFF;
+}
+.inlinemod
+{
+	background: #666666;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.inlinemod a:link, .inlinemod_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.inlinemod a:visited, .inlinemod_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.inlinemod a:hover, .inlinemod a:active, .inlinemod_ahover
+{
+	color: #00CCFF;
+}
+.wysiwyg
+{
+	background: #1f1f1f;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 5px 10px 10px 10px;
+	padding: 0px;
+}
+.wysiwyg a:link, .wysiwyg_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.wysiwyg a:visited, .wysiwyg_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.wysiwyg a:hover, .wysiwyg a:active, .wysiwyg_ahover
+{
+	color: #00CCFF;
+}
+textarea, .bginput
+{
+	background: #1F1F1F;
+	color: #fff;
+	font: 9pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border: 1px solid #000;
+	margin: 5px;
+	padding: 3px;
+}
+.bginput option, .bginput optgroup
+{
+	font-size: 9pt;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.button
+{
+	background: #1F1F1F;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border: 1px solid #000;
+}
+select
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	background-color: #1f1f1f;
+	border: 1px solid #000;
+	color: #999999
+}
+option, optgroup
+{
+	font-size: 11px;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.smallfont
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.time
+{
+	color: #CCCCCC;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	text-shadow: rgba(0,0,0,.9) 1px 1px 1px;
+}
+.navbar a:link, .navbar_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.navbar a:visited, .navbar_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.navbar a:hover, .navbar a:active, .navbar_ahover
+{
+	color: #00CCFF;
+}
+.highlight
+{
+	color: #FF0000;
+	font-weight: bold;
+}
+.fjsel
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #FFFFFF;
+}
+.fjdpth0
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #CCCCCC;
+}
+.panel
+{
+	background: #181818;
+	color: #ffffff;
+}
+.panel a:link, .panel_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.panel a:visited, .panel_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.panel a:hover, .panel a:active, .panel_ahover
+{
+	color: #00CCFF;
+}
+.panelsurround
+{
+	background: #181818;
+	color: #000000;
+}
+legend
+{
+	color: #666666;
+	font: 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.vbmenu_control
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.vbmenu_control a:link, .vbmenu_control_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:visited, .vbmenu_control_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.vbmenu_control a:hover, .vbmenu_control a:active, .vbmenu_control_ahover
+{
+	color: #00CCFF;
+}
+.vbmenu_popup
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #FFFFFF;
+	border: 1px solid #181818;
+}
+.vbmenu_option
+{
+	background: #181818;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_option a:link, .vbmenu_option_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_option a:visited, .vbmenu_option_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.vbmenu_option a:hover, .vbmenu_option a:active, .vbmenu_option_ahover
+{
+	color: #00CCFF;
+}
+.vbmenu_hilite
+{
+	background: #000 url(images/BluEVO/gradients/gradient_tcat.gif) repeat-x top left;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_hilite a:link, .vbmenu_hilite_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:visited, .vbmenu_hilite_avisited
+{
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.vbmenu_hilite a:hover, .vbmenu_hilite a:active, .vbmenu_hilite_ahover
+{
+	color: #00CCFF;
+}
+/* ***** styling for 'big' usernames on postbit etc. ***** */
+.bigusername { font-size: 14pt; }
+
+/* ***** small padding on 'thead' elements ***** */
+td.thead, th.thead, div.thead { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** de-emphasized text */
+.shade, a.shade:link, a.shade:visited { color: #777777; text-decoration: none; }
+a.shade:active, a.shade:hover { color: #FF4400; text-decoration: none; }
+.tcat .shade, .thead .shade, .tfoot .shade { color: #DDDDDD; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; border: 1px solid #000; border-radius: 5px;}
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+/* ***** Header and Nav  ***** */
+.header_bg {
+background: #000000 url(images/BluEVO/navbg.gif) ;
+}
+.vb_navigation {
+background: #000000 url(images/BluEVO/navbg.gif) ;
+}
+
+/* ***** navigation roll-overs element */
+
+.css_nav {
+float: left;
+height: 34px;
+color: #ffffff;
+font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+font-size: 10px;
+font-weight: bold;
+text-align: center;
+margin: 0px;
+padding: 0px;
+border: 0px;
+}
+
+.css_nav a:link , .css_nav a:visited {
+display: block;
+background-image: url(images/BluEVO/navbg.gif);
+color: #ffffff;
+font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+font-size: 10px;
+font-weight: bold;
+line-height: 31px;
+text-align: center;
+text-decoration: none;
+
+height: 34px;
+-webkit-transition: opacity 400ms ease-in-out;
+-moz-transition: opacity 400ms ease-in-out;
+}
+
+.css_nav a:hover, .css_nav a:active {
+background-image: url(images/BluEVO/hover.png);
+color: #f4f9ff;
+text-decoration: none;
+line-height: 33px;
+height: 34px;
+text-shadow: rgba(0,0,0,.9) 1px 1px 1px;
+}
+
+.mouseover img {
+filter:alpha(opacity=100); 
+-moz-opacity: 1.0; 
+opacity: 1.00;
+}
+ 
+.mouseover img:hover{
+border: 0;
+filter:alpha(opacity=100); 
+-moz-opacity: 1.00; 
+opacity: 1.00;
+}
+
+.repa_pos {color:green; white-space: nowrap;}
+.repa_neg {color:#bb2618; white-space: nowrap;}
+.repa_balance {color: #777777; white-space: nowrap;}
+
+#support-widget {
+    position: fixed;
+    top: 50%
+}
+
+#support-button {
+    text-decoration: none;
+}
+
+#support-notice {
+    display: none;
+}
+
+#support-notice-window {
+    width: 480px;
+    background: #171717;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px;
+}
+
+.vr-close {
+    position: relative;
+    float: right;
+    top: -50px;
+    height: 25px;
+    cursor: pointer;
+    width: 25px;
+    right: -50px;
+    background: url('/images/misc/close.png') no-repeat scroll center center transparent;
+}
+
+.support-info {
+    color: rgb(255, 255, 255);
+    font-size: 15pt;
+    margin: 0 0 20px;
+}
+
+.info {
+    padding-left: 3px;
+    padding-right: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-top: 1px solid #1F1F1F;
+    border-right: 1px solid #1F1F1F;
+    border-left: 1px solid #1F1F1F;
+    border-bottom: 1px solid #1F1F1F;
+    margin-bottom: 3px;
+}
+
+.lost-pw-button {
+    background: #bb2618;
+    border: 1px solid #000;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 6px;
+    margin: 0 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#top_lang_selector{background:none repeat scroll 0 0 #1F1F1F;border-radius:10px 10px 10px 10px;line-height:20px;padding:10px;position:absolute;right:25px;top:5px;font-size:10px;text-decoration:none;}
+
+.flag{background:url("../../images/flags.png") no-repeat;float:left;height:11px;margin:5px 5px 0 0;width:16px;text-decoration:none;}
+.flag.flag-gb{background-position:-16px 0}
+.flag.flag-ru{background-position:0 -11px}
+.flag.flag-us{background-position:-16px -11px}
+
+#banner {
+    background: #171717 none;
+    border-radius: 5px;
+    border: 2px solid #171717;
+}
