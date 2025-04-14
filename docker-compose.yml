@@ -7,7 +7,13 @@ services:
     networks:
       - appnet
     volumes:
-      - ./forum.sql:/var/www/html/forum.sql  # Mount forum.sql inside the container
+      - ./phpmyadmin-custom.conf:/etc/apache2/conf-enabled/phpmyadmin-custom.conf
+      - ./my.cnf:/etc/mysql/my.cnf  # Mount your custom MySQL config
+    environment:
+      - MYSQL_ROOT_PASSWORD=Ma66217829
+      - MYSQL_DATABASE=forum
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Ma66217829
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -38,6 +44,8 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - appnet
+    volumes:
+      - ./my.cnf:/etc/mysql/my.cnf  # Mount custom MySQL config file
 
 volumes:
   db_data:
