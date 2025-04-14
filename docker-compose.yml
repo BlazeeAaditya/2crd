@@ -30,7 +30,6 @@ services:
       - db
     networks:
       - appnet
-
   db:
     image: mysql:5.7
     container_name: mysql-db
@@ -42,11 +41,10 @@ services:
       MYSQL_PASSWORD: Ma66217829
     volumes:
       - db_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/my.cnf  # ← move it here instead
     networks:
       - appnet
-    volumes:
-      - ./my.cnf:/etc/mysql/my.cnf  # Mount custom MySQL config file
-
+      
 volumes:
   db_data:
 
