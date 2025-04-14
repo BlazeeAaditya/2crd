@@ -6,6 +6,8 @@ services:
     container_name: php56-web
     networks:
       - appnet
+    volumes:
+      - ./forum.sql:/var/www/html/forum.sql  # Mount forum.sql inside the container
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
