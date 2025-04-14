@@ -46,7 +46,7 @@ services:
     networks:
       - appnet
     ports:
-      - "3307:3306"  # Expose MySQL port to the host machine
+      - "3308:3306"  # Expose MySQL port to the host machine
 
 volumes:
   db_data:
