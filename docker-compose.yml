@@ -19,8 +19,8 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
+      PMA_HOST: 154.81.179.112
+      PMA_PORT: 3308
       UPLOAD_LIMIT: 3G
     ports:
       - "8083:80"  # Access phpMyAdmin at http://localhost:8083
