@@ -14,7 +14,7 @@ RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && 
     echo "max_input_time = 600" >> /usr/local/etc/php/conf.d/uploads.ini
 
 # Add Apache config for large requests
-RUN echo "LimitRequestBody 0" >> /etc/apache2/apache2.conf
+RUN echo "LimitRequestBody 12884901888" >> /etc/apache2/apache2.conf
 
 # Copy app
 COPY app/ /var/www/html/
