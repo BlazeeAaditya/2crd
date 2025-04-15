@@ -3,7 +3,7 @@
 || #################################################################### ||
 || # vBulletin 3.8.7 Patch Level 2
 || # ---------------------------------------------------------------- # ||
-|| # Copyright ©2000-2011 vBulletin Solutions, Inc. All Rights Reserved. ||
+|| # Copyright Â©2000-2011 vBulletin Solutions, Inc. All Rights Reserved. ||
 || # This file may not be redistributed in whole or significant part. # ||
 || # ---------------- VBULLETIN IS NOT FREE SOFTWARE ---------------- # ||
 || # http://www.vbulletin.com | http://www.vbulletin.com/license.html # ||
@@ -308,7 +308,7 @@ class vB_Database
 		// catch_db_error will handle exiting, no infinite loop here
 		do
 		{
-			$link = $this->functions[$usepconnect ? 'pconnect' : 'connect']("$servername:$port", $username, $password);
+			@$link = $this->functions[$usepconnect ? 'pconnect' : 'connect']("$servername:$port", $username, $password);
 		}
 		while ($link == false AND $this->reporterror);
 
