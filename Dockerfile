@@ -1,4 +1,4 @@
-FROM php:5.3-apache
+FROM crazymax/php:5.3-apache
 
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
