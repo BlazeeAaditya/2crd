@@ -1,16 +1,10 @@
 FROM php:5.6-apache
 
-# Update Debian repositories to the archived versions for stretch
-RUN sed -i 's/http:\/\/deb.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list && \
-    sed -i 's/http:\/\/security.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list
-
 # Enable mod_rewrite
 RUN a2enmod rewrite
 
-# Install the mysql extension
-RUN apt-get update && apt-get install -y \
-    libmysqlclient-dev && \
-    docker-php-ext-install mysql
+# Install legacy extensions including mysql
+RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
 
 # Set PHP configurations for large uploads
 RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
@@ -18,9 +12,6 @@ RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && 
     echo "memory_limit = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
     echo "max_execution_time = 600" >> /usr/local/etc/php/conf.d/uploads.ini && \
     echo "max_input_time = 600" >> /usr/local/etc/php/conf.d/uploads.ini
-
-# Disable deprecation warnings for mysql extension usage
-RUN echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT" >> /usr/local/etc/php/conf.d/custom.ini
 
 # Add Apache config for large requests
 RUN echo "LimitRequestBody 12884901888" >> /etc/apache2/apache2.conf
