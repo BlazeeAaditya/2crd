@@ -4,6 +4,8 @@ services:
   web:
     build: .
     container_name: php56-web
+    environment:
+      - CONTAINERD_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE=1
     networks:
       - appnet
     volumes:
