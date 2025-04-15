@@ -12,8 +12,10 @@ RUN apt-get update && apt-get install -y \
     libmcrypt-dev \
     libmariadb-dev-compat \
     libicu-dev \
+    apache2-dev \
     apache2 \
     && apt-get clean
+
 
 
 # Download PHP 5.6.14 source
