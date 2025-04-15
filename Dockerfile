@@ -1,58 +1,33 @@
-# Use an appropriate base image
-FROM php:5.6-apache
+FROM php:5.6.15-apache
 
-# Set environment variables for curl and library paths
-ENV CFLAGS="-I/usr/include/curl"
-ENV LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    wget \
-    curl \
-    build-essential \
-    libxml2-dev \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libmcrypt-dev \
-    libmariadb-dev-compat \
-    libicu-dev \
-    apache2-dev \
-    apache2 \
-    && apt-get clean
-
-# Install libcurl from source if needed (optional if the above doesn't work)
-RUN cd /tmp && \
-    wget https://curl.se/download/curl-7.79.1.tar.gz && \
-    tar -xvzf curl-7.79.1.tar.gz && \
-    cd curl-7.79.1 && \
-    ./configure && \
-    make && \
-    make install
-
-# Ensure the necessary directories and libraries are available
-RUN ln -s /usr/include/curl /usr/local/include/curl
-
-# Set the working directory
-WORKDIR /var/www/html
-
-# Install required PHP extensions
-RUN docker-php-ext-install \
-    mysqli \
-    soap \
-    bcmath \
-    mcrypt \
-    && docker-php-ext-enable soap
-
-# Configure Apache
+# Enable mod_rewrite
 RUN a2enmod rewrite
 
-# Enable any necessary PHP settings (if needed)
-COPY php.ini /usr/local/etc/php/
+# Install legacy extensions including mysql
+RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
 
-# Expose the necessary port
-EXPOSE 80
+# Set PHP configurations for large uploads
+RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
+    echo "post_max_size = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
+    echo "memory_limit = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
+    echo "max_execution_time = 600" >> /usr/local/etc/php/conf.d/uploads.ini && \
+    echo "max_input_time = 600" >> /usr/local/etc/php/conf.d/uploads.ini
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Add Apache config for large requests
+RUN echo "LimitRequestBody 12884901888" >> /etc/apache2/apache2.conf
+
+# Copy app
+COPY app/ /var/www/html/
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html
+
+# Allow .htaccess overrides
+RUN echo '<Directory /var/www/html>\n\
+    Options Indexes FollowSymLinks\n\
+    AllowOverride All\n\
+    Require all granted\n\
+</Directory>' >> /etc/apache2/apache2.conf
+
+# Restart apache to apply changes
+RUN service apache2 restart
