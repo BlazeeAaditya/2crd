@@ -45,7 +45,7 @@ $config['Database']['technicalemail'] = 'yourmail@xxxx.com';
 	// New versions of MySQL (4.1+) have introduced some behaviors that are
 	// incompatible with vBulletin. Setting this value to "true" disables those
 	// behaviors. You only need to modify this value if vBulletin recommends it.
-$config['Database']['force_sql_mode'] = false;
+$config['Database']['force_sql_mode'] = true;
 
 
 
