@@ -4,7 +4,8 @@ FROM php:5.6-apache
 RUN a2enmod rewrite
 
 # Install legacy extensions including mysql
-RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysql mysqli pdo pdo_mysql && \
+    docker-php-ext-enable mysql
 
 # Set PHP configurations for large uploads
 RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
