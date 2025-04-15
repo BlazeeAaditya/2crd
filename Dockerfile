@@ -1,4 +1,4 @@
-FROM php:5.6.14-apache
+FROM php:5.6.40-apache
 
 # Enable mod_rewrite
 RUN a2enmod rewrite
