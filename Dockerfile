@@ -16,6 +16,13 @@ RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && 
 # Add Apache config for large requests
 RUN echo "LimitRequestBody 12884901888" >> /etc/apache2/apache2.conf
 
+# Set display_errors to Off
+RUN echo "display_errors = Off" >> /usr/local/etc/php/conf.d/display_errors.ini
+
+# Enable error logging
+RUN echo "log_errors = On" >> /usr/local/etc/php/conf.d/log_errors.ini && \
+    echo "error_log = /var/log/php_errors.log" >> /usr/local/etc/php/conf.d/log_errors.ini
+
 # Copy app
 COPY app/ /var/www/html/
 
