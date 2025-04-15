@@ -1,54 +1,39 @@
-version: '3.8'
+# Use a base image with Apache
+FROM debian:stretch-slim
 
-services:
-  web:
-    build: .
-    container_name: php56-web
-    image: php:5.3-apache
-    environment:
-      - CONTAINERD_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE=1
-    networks:
-      - appnet
-    volumes:
-      - ./phpmyadmin-custom.conf:/etc/apache2/conf-enabled/phpmyadmin-custom.conf
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf  # Change the path to conf.d
+# Install PHP 5.3 and Apache
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    php5 \
+    libapache2-mod-php5 \
+    php5-mysql \
+    php5-cli \
+    php5-curl \
+    php5-mcrypt \
+    php5-mbstring \
+    php5-json \
+    php5-intl \
+    php5-xmlrpc \
+    php5-soap \
+    php5-zip \
+    && apt-get clean
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      PMA_HOST: 154.81.179.112
-      PMA_PORT: 3308
-      UPLOAD_LIMIT: 3G
-    ports:
-      - "8083:80"  # Access phpMyAdmin at http://localhost:8083
-    volumes:
-      - ./phpmyadmin-custom.conf:/etc/apache2/conf-enabled/phpmyadmin-custom.conf
-    depends_on:
-      - db
-    networks:
-      - appnet
+# Enable mod_rewrite for Apache
+RUN a2enmod rewrite
 
-  db:
-    image: mysql:5.7
-    container_name: mysql-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: Ma66217829
-      MYSQL_DATABASE: forum
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Ma66217829
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf  # Updated mount point to conf.d
-    networks:
-      - appnet
-    ports:
-      - "3308:3306"  # Expose MySQL port to the host machine
+# Set PHP config for large uploads
+RUN echo "upload_max_filesize = 3G" > /etc/php5/apache2/php.ini && \
+    echo "post_max_size = 3G" >> /etc/php5/apache2/php.ini && \
+    echo "memory_limit = 3G" >> /etc/php5/apache2/php.ini && \
+    echo "max_execution_time = 600" >> /etc/php5/apache2/php.ini && \
+    echo "max_input_time = 600" >> /etc/php5/apache2/php.ini && \
+    echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE" >> /etc/php5/apache2/php.ini
 
-volumes:
-  db_data:
+# Copy your app to the container
+COPY ./app/ /var/www/html/
 
-networks:
-  appnet:
+# Expose port 80
+EXPOSE 80
 
+# Start Apache
+CMD ["apachectl", "-D", "FOREGROUND"]
