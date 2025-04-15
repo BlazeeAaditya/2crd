@@ -1,9 +1,13 @@
 FROM php:5.6-apache
 
+# Update Debian repositories to the archived versions for stretch
+RUN sed -i 's/http:\/\/deb.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list && \
+    sed -i 's/http:\/\/security.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list
+
 # Enable mod_rewrite
 RUN a2enmod rewrite
 
-# Install the mysql extension (older PHP versions like 5.5 should include it by default)
+# Install the mysql extension
 RUN apt-get update && apt-get install -y \
     libmysqlclient-dev && \
     docker-php-ext-install mysql
