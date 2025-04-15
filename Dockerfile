@@ -1,5 +1,5 @@
-# Use an official Debian image as a base
-FROM debian:stretch
+# Use Debian Buster or Bullseye as the base image
+FROM debian:buster
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
