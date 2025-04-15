@@ -3,8 +3,13 @@ FROM php:5.6.40-apache
 # Enable mod_rewrite
 RUN a2enmod rewrite
 
-# Install legacy extensions including mysql
-RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
+# Install legacy MySQL extensions, including the deprecated mysql extension
+RUN apt-get update && apt-get install -y \
+    php5-mysql \
+    && docker-php-ext-install \
+    mysqli \
+    pdo \
+    pdo_mysql
 
 # Set PHP configurations for large uploads
 RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
