@@ -1,10 +1,12 @@
-FROM php:5.6-apache
+FROM php:5.5-apache
 
 # Enable mod_rewrite
 RUN a2enmod rewrite
 
-# Install legacy extensions including mysql
-RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
+# Install the mysql extension (older PHP versions like 5.5 should include it by default)
+RUN apt-get update && apt-get install -y \
+    libmysqlclient-dev && \
+    docker-php-ext-install mysql
 
 # Set PHP configurations for large uploads
 RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && \
