@@ -52,7 +52,7 @@ $config['Database']['force_sql_mode'] = true;
 	//	****** MASTER DATABASE SERVER NAME AND PORT ******
 	//	This is the hostname or IP address and port of the database server.
 	//	If you are unsure of what to put here, leave the default values.
-$config['MasterServer']['servername'] = '154.81.179.112';
+$config['MasterServer']['servername'] = '127.0.0.1';
 $config['MasterServer']['port'] = 3306;
 
 	//	****** MASTER DATABASE USERNAME & PASSWORD ******
