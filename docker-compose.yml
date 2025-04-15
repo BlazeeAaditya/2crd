@@ -8,12 +8,7 @@ services:
       - appnet
     volumes:
       - ./phpmyadmin-custom.conf:/etc/apache2/conf-enabled/phpmyadmin-custom.conf
-      - ./my.cnf:/etc/mysql/my.cnf  # Mount your custom MySQL config
-    environment:
-      - MYSQL_ROOT_PASSWORD=Ma66217829
-      - MYSQL_DATABASE=forum
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=Ma66217829
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf  # Change the path to conf.d
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -42,7 +37,7 @@ services:
       MYSQL_PASSWORD: Ma66217829
     volumes:
       - db_data:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/my.cnf  # ← Ensure MySQL config is mounted
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf  # Updated mount point to conf.d
     networks:
       - appnet
     ports:
@@ -53,3 +48,4 @@ volumes:
 
 networks:
   appnet:
+
