@@ -1,7 +1,6 @@
 # Use Debian Buster or Bullseye as the base image
 FROM debian:buster
 
-# Install dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -11,10 +10,11 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libpng-dev \
     libmcrypt-dev \
-    libmysqlclient-dev \
+    libmariadb-dev-compat \
     libicu-dev \
     apache2 \
     && apt-get clean
+
 
 # Download PHP 5.6.14 source
 RUN wget https://www.php.net/distributions/php-5.6.14.tar.bz2
