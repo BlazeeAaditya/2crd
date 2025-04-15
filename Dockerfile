@@ -1,12 +1,18 @@
-# Use Debian Buster or Bullseye as the base image
-FROM debian:buster
+# Use an appropriate base image
+FROM php:5.6-apache
 
+# Set environment variables for curl and library paths
+ENV CFLAGS="-I/usr/include/curl"
+ENV LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
+
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
     build-essential \
     libxml2-dev \
     libcurl4-openssl-dev \
+    libssl-dev \
     libjpeg-dev \
     libpng-dev \
     libmcrypt-dev \
@@ -16,48 +22,37 @@ RUN apt-get update && apt-get install -y \
     apache2 \
     && apt-get clean
 
+# Install libcurl from source if needed (optional if the above doesn't work)
+RUN cd /tmp && \
+    wget https://curl.se/download/curl-7.79.1.tar.gz && \
+    tar -xvzf curl-7.79.1.tar.gz && \
+    cd curl-7.79.1 && \
+    ./configure && \
+    make && \
+    make install
 
+# Ensure the necessary directories and libraries are available
+RUN ln -s /usr/include/curl /usr/local/include/curl
 
-# Download PHP 5.6.14 source
-RUN wget https://www.php.net/distributions/php-5.6.14.tar.bz2
+# Set the working directory
+WORKDIR /var/www/html
 
-# Extract PHP source
-RUN tar -xjf php-5.6.14.tar.bz2
-
-# Build and install PHP 5.6.14 from source
-WORKDIR php-5.6.14
-RUN ./configure --with-apxs2=/usr/bin/apxs --with-mysqli --with-curl --enable-soap --with-zlib --with-mhash --enable-bcmath --with-mcrypt \
-    && make \
-    && make install
+# Install required PHP extensions
+RUN docker-php-ext-install \
+    mysqli \
+    soap \
+    bcmath \
+    mcrypt \
+    && docker-php-ext-enable soap
 
 # Configure Apache
 RUN a2enmod rewrite
 
-# Set PHP configurations for large uploads
-RUN echo "upload_max_filesize = 3G" > /etc/php/5.6/apache2/php.ini \
-    && echo "post_max_size = 3G" >> /etc/php/5.6/apache2/php.ini \
-    && echo "memory_limit = 3G" >> /etc/php/5.6/apache2/php.ini \
-    && echo "max_execution_time = 600" >> /etc/php/5.6/apache2/php.ini \
-    && echo "max_input_time = 600" >> /etc/php/5.6/apache2/php.ini
+# Enable any necessary PHP settings (if needed)
+COPY php.ini /usr/local/etc/php/
 
-# Add Apache config for large requests
-RUN echo "LimitRequestBody 12884901888" >> /etc/apache2/apache2.conf
-
-# Copy app to Apache server
-COPY app/ /var/www/html/
-
-# Set correct permissions for the app
-RUN chown -R www-data:www-data /var/www/html
-
-# Allow .htaccess overrides
-RUN echo '<Directory /var/www/html>\n\
-    Options Indexes FollowSymLinks\n\
-    AllowOverride All\n\
-    Require all granted\n\
-</Directory>' >> /etc/apache2/apache2.conf
-
-# Expose Apache HTTP port
+# Expose the necessary port
 EXPOSE 80
 
-# Start Apache in the foreground
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+# Start Apache
+CMD ["apache2-foreground"]
