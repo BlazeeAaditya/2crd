@@ -5,7 +5,7 @@ RUN a2enmod rewrite
 
 # Install necessary dependencies and MySQL extensions
 RUN apt-get update && apt-get install -y \
-    libmysqlclient-dev \
+    libmariadb-dev \
     && docker-php-ext-install \
     mysqli \
     pdo \
