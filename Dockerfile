@@ -15,6 +15,9 @@ RUN echo "upload_max_filesize = 3G" >> /usr/local/etc/php/conf.d/uploads.ini && 
     echo "max_execution_time = 600" >> /usr/local/etc/php/conf.d/uploads.ini && \
     echo "max_input_time = 600" >> /usr/local/etc/php/conf.d/uploads.ini
 
+# Disable deprecation warnings for mysql extension usage
+RUN echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT" >> /usr/local/etc/php/conf.d/custom.ini
+
 # Add Apache config for large requests
 RUN echo "LimitRequestBody 12884901888" >> /etc/apache2/apache2.conf
 
