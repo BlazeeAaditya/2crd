@@ -1,9 +1,9 @@
-FROM php:5.6.40-apache
+FROM php:7.4-apache
 
 # Enable mod_rewrite
 RUN a2enmod rewrite
 
-# Install necessary dependencies and MySQL extensions for PHP 5.6
+# Install necessary dependencies and MySQL extensions
 RUN apt-get update && apt-get install -y \
     libmysqlclient-dev \
     && docker-php-ext-install \
